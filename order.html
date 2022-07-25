@@ -1,24 +1,22 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
 <html>
+{% extends "base.html" %}
 
-  <head>
+{% block title %}Order - 212 Burgers{% endblock %}
 
-    <meta charset="utf-8">
-    <title>212 Burgers</title>
-    <meta name="description" content="Order - 24 hour food delivery. Order burgers, drinks, fries, and more!" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="screen.css" />
+{% block head %}
+    {{ super() }}
+    <style>
+      body {
+        background-color: #DFE;
+      }
+    </style>
+{% endblock %}
 
-  </head>
-
-  <body>
-
+{% block content %}
     <div id="header">
       <h1>Order now</h1>
       <p>PLACE YOUR ORDER</p>
     </div>
-
-  </body>
-
-</html>
+{% endblock %}

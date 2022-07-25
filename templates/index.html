@@ -8,7 +8,7 @@
     <title>212 Burgers</title>
     <meta name="description" content="24 hour food delivery. Order burgers, drinks, fries, and more!" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="screen.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='screen.css') }}" />
 
   </head>
 
@@ -16,7 +16,7 @@
 
       <div id="header">
 
-        <img src="logo.svg" id="logo" />
+        <img src="{{ url_for('static', filename='logo.svg') }}" id="logo" />
         <h1>Welcome!</h1>
         <em>BURGERS &bull; DRINKS &bull; FRIES</em>
         <p>
@@ -29,6 +29,33 @@
       <h1>Menu</h1>
 
       <div>
+        <h2>Burgers</h2>
+        <ol class="menu-items">
+          {% for burger in burgers %}
+          <li> {{ burger[0] }} <span class="price">{{burger[1]}}</span> </li>
+            {% endfor %}
+          </ol>
+        </div>
+
+        <div>
+          <h2>Drinks</h2>
+          <ol class="menu-items">
+            {% for drink in drinks %}
+            <li> {{ drink[0] }} <span class="price">{{drink[1]}}</span> </li>
+              {% endfor %}
+            </ol>
+          </div>
+
+          <div>
+            <h2>Sides</h2>
+            <ul class="menu-items">
+              {% for side in sides %}
+              <li> {{ side[0] }} <span class="price">{{side[1]}}</span> </li>
+                {% endfor %}
+            </ul>
+          </div>
+
+<!--      <div>
         <h2>Burgers</h2>
         <ol class="menu-items">
           <li>Classic Burger <span class="price">$4.99</span></li>
@@ -57,12 +84,12 @@
           <li>Salad <span class="price">$1.99</span></li>
         </ul>
       </div>
-
+-->
     </div>
 
 
     <div id="footer">
-         disclaimer
+         {{disclaimer|upper}}
        </div>
 
      </body>
