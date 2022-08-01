@@ -1,12 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, g
+import sqlite3
 app = Flask(__name__)
 
-burgers = [
-['Classic Burger', '$5.99'],
-['Cheese Burger', '$7.99'],
-['Classic Cheesier Burger', '$4.99'],
-['Double Burger', '$5.99']
-]
+MENUDB = 'menu.db'
+
+
 
 drinks = [
 ['cola', '$1.00'],
@@ -25,6 +23,15 @@ sides = [
 
 @app.route('/')
 def index():
+    db = sqlite3.connect(MENUDB)
+    print(db)
+
+burgers = []
+cur = db.execute('SELECT burger,price FROM burgers')
+    for row in cur:
+        burgers.append(list(row))
+    db.close()
+
     return render_template('index.html', disclaimer='may contain nuts',
     burgers=burgers,
     drinks=drinks,
